@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html, body { height: 100%; }
+
+body {
+  background:
+    radial-gradient(1200px 800px at 25% 15%, rgba(139,92,246,0.12), transparent 55%),
+    radial-gradient(1000px 700px at 85% 20%, rgba(34,211,238,0.10), transparent 55%),
+    radial-gradient(900px 700px at 60% 85%, rgba(255,255,255,0.06), transparent 60%),
+    linear-gradient(180deg, #0A0B10 0%, #090A0F 100%);
+  color: rgba(255,255,255,0.92);
+}
+
+/* Subtle grain overlay */
+.grain::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:0.12;
+  mix-blend-mode: overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
